@@ -31,4 +31,7 @@ subdomain=$2
 ./ngrok authtoken $authtoken
 ./ngrok http 8080 --subdomain=$subdomain
 
+# Delete the ngrok zip after running
+rm ngrok-stable-linux-amd64.zip
+
 
