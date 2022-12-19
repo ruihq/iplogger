@@ -23,6 +23,12 @@ unzip ngrok-stable-linux-amd64.zip
 # Make the ngrok executable executable
 chmod +x ngrok
 
-# Host a website on a local server at port 8080 using ngrok
-./ngrok http 8080
+# Get the authtoken and subdomain from the command line arguments
+authtoken=$1
+subdomain=$2
+
+# Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
+./ngrok authtoken $authtoken
+./ngrok http 8080 --subdomain=$subdomain
+
 
