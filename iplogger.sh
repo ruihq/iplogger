@@ -5,6 +5,9 @@ sudo apt install wget
 sudo apt install figlet
 clear
 figlet IPLOGGER
+# Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
+./ngrok authtoken $authtoken
+./ngrok http 8080 --subdomain=$subdomain
 
 # Get the client's IP address as a JSON object
 ip_json=$(curl http://ip.jsontest.com/)
@@ -28,18 +31,18 @@ chmod +x ngrok
 authtoken=$1
 subdomain=$2
 
-# Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
-./ngrok authtoken $authtoken
-./ngrok http 8080 --subdomain=$subdomain
+# Prompt the user for the authtoken and subdomain
+read -p "Enter ngrok authtoken: " authtoken
+read -p "Enter ngrok subdomain: " subdomain
+
+# Log the IP address to a file
+echo $ip >> ip.log
 
 # Delete the ngrok zip after running
 rm ngrok-stable-linux-amd64.zip
 
-figlet IPLOGGERISON
 echo All ips are in the ip.log file.
 echo To check them run this command "nano ip.log"
-echo Thank you.
-echo The command must be runned using ./iplogger.sh YOUR_AUTHTOKEN
 
 
 
