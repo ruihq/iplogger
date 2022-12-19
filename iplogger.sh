@@ -1,8 +1,17 @@
 #!/bin/bash
-sudo apt update
-sudo apt upgrade
-sudo apt install wget
-sudo apt install figlet
+apt update
+apt upgrade 
+apt install wget 
+apt install figlet 
+apt install unzip
+clear
+
+# Download ngrok
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+
+# Extract the ngrok executable
+unzip ngrok-stable-linux-amd64.zip
+
 clear
 figlet IPLOGGER
 # Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
@@ -17,12 +26,6 @@ ip=$(echo $ip_json | jq -r '.ip')
 
 # Log the IP address to a file
 echo $ip >> ip.log
-
-# Download ngrok
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-
-# Extract the ngrok executable
-unzip ngrok-stable-linux-amd64.zip
 
 # Make the ngrok executable executable
 chmod +x ngrok  
