@@ -3,6 +3,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt install wget
 sudo apt install figlet
+clear
 figlet IPLOGGER
 
 # Get the client's IP address as a JSON object
@@ -21,7 +22,7 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 
 # Make the ngrok executable executable
-chmod +x ngrok
+chmod +x ngrok  
 
 # Get the authtoken and subdomain from the command line arguments
 authtoken=$1
@@ -33,5 +34,12 @@ subdomain=$2
 
 # Delete the ngrok zip after running
 rm ngrok-stable-linux-amd64.zip
+
+figlet IPLOGGERISON
+echo All ips are in the ip.log file.
+echo To check them run this command "nano ip.log"
+echo Thank you.
+echo The command must be runned using ./iplogger.sh YOUR_AUTHTOKEN
+
 
 
