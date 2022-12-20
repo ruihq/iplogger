@@ -12,12 +12,6 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 # Extract the ngrok executable
 unzip ngrok-stable-linux-amd64.zip
 
-clear
-figlet IPLOGGER
-# Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
-./ngrok authtoken $authtoken
-./ngrok http 8080 --subdomain=$subdomain
-
 # Get the client's IP address as a JSON object
 ip_json=$(curl http://ip.jsontest.com/)
 
@@ -38,8 +32,11 @@ subdomain=$2
 read -p "Enter ngrok authtoken: " authtoken
 read -p "Enter ngrok subdomain: " subdomain
 
-# Log the IP address to a file
-echo $ip >> ip.log
+clear
+figlet IPLOGGER
+# Host a website on a local server at port 8080 using ngrok and the specified authtoken and subdomain
+./ngrok authtoken $authtoken
+./ngrok http 8080 --subdomain=$subdomain
 
 # Delete the ngrok zip after running
 rm ngrok-stable-linux-amd64.zip
